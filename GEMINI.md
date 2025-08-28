@@ -11,7 +11,9 @@
     *   [x] Interface visual do sistema de medalhas implementada.
 *   **Fase 4 (UI Mapa Mundial):** Concluída.
     *   [x] Interface visual do Mapa Mundial implementada.
-*   **Próxima Fase (Fase 5):** Implementação da Responsividade para Dispositivos Móveis.
+*   **Fase 5 (Responsividade):** Concluída.
+    *   [x] Layout ajustado para dispositivos móveis.
+*   **Próxima Fase (Fase 6):** Implementação do novo Tema de Cores (Modo Noturno).
 
 ---
 

@@ -174,7 +174,7 @@ A serem adicionados novos estilos para o container do mapa (`.world-map-containe
 ---
 
 ## 6. Responsividade para Dispositivos Móveis (Fase 5) 📱
-**Status: Pendente**
+**Status: Concluído (Fase 5)**
 
 Esta seção detalha o plano para tornar a aplicação web responsiva.
 
@@ -184,3 +184,13 @@ Adicionar `@media queries` ao final do arquivo `styles.css` para ajustar o layou
 - Redução de fontes e espaçamentos.
 - Ajuste de layouts de grid/flex para colunas únicas.
 - Garantir que a navegação por abas não quebre em telas pequenas.
+---
+
+## 7. Novo Tema de Cores (Modo Noturno) (Fase 6) 🎨
+**Status: Pendente**
+
+Esta seção detalha o plano para implementar um novo tema de cores acessível.
+
+### Ação Necessária:
+
+Substituir as variáveis de cor no seletor `:root` do arquivo `styles.css` pela nova paleta de cores acessível, com fundo roxo escuro, texto azul claro e detalhes em rosa.
