@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Around the World - English Learning Adventure</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <header class="main-header">
+            <div class="session-timer">
+                <span id="timer-display">20:00</span>
+            </div>
+            <nav class="tab-navigation">
+                <button class="tab-btn active" data-tab="world-map">🌍 World Map</button>
+                <button class="tab-btn" data-tab="vocabulary">📚 Vocabulary</button>
+                <button class="tab-btn" data-tab="conversations">💬 Conversations</button>
+                <button class="tab-btn" data-tab="grammar">📝 Grammar</button>
+                <button class="tab-btn" data-tab="progress">🏆 Progress</button>
+            </nav>
+            <div class="adhd-controls">
+                <button id="focus-mode-toggle">💡 Focus Mode</button>
+            </div>
+        </header>
+
+        <div class="progress-bar">
+            <div class="progress-fill" style="width: 0%"></div>
+        </div>
+
+        <main id="tab-content">
+            <div class="tab-pane active" id="world-map" role="tabpanel" tabindex="-1">
+                <h2>Welcome to your English Adventure!</h2>
+                <p>Select a module from the tabs above to begin your journey.</p>
+                <p>Use the <strong>Focus Mode</strong> toggle to minimize distractions.</p>
+            </div>
+            <div class="tab-pane" id="vocabulary" role="tabpanel" tabindex="-1" hidden></div>
+            <div class="tab-pane" id="conversations" role="tabpanel" tabindex="-1" hidden></div>
+            <div class="tab-pane" id="grammar" role="tabpanel" tabindex="-1" hidden></div>
+            <div class="tab-pane" id="progress" role="tabpanel" tabindex="-1" hidden></div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
