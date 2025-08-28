@@ -389,12 +389,33 @@ document.addEventListener('DOMContentLoaded', () => {
         // --- Render Functions ---
         renderProgressTab() {
             const pane = document.getElementById('progress');
+            
+            // Badge HTML Generation
+            const badgesHTML = this.badgeSystem.available.map(badge => {
+                const earned = this.state.badges.includes(badge.name);
+                return `
+                    <div class="badge-item ${earned ? 'earned' : ''}" title="${badge.description}">
+                        <img src="${badge.icon}" alt="${badge.name}" class="badge-icon">
+                        <div class="badge-info">
+                            <h4 class="badge-name">${badge.name}</h4>
+                            <p class="badge-description">${badge.description}</p>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
             pane.innerHTML = `
                 <h2>Your Progress</h2>
-                <p><strong>Score:</strong> ${this.state.score}</p>
-                <p><strong>Current Streak:</strong> ${this.state.streak}</p>
-                <p><strong>Best Streak:</strong> ${this.state.bestStreak}</p>
-                <p><strong>Questions Answered:</strong> ${this.state.questionsAnswered}</p>
+                <div class="progress-stats">
+                    <p><strong>Score:</strong> ${this.state.score}</p>
+                    <p><strong>Current Streak:</strong> ${this.state.streak}</p>
+                    <p><strong>Best Streak:</strong> ${this.state.bestStreak}</p>
+                    <p><strong>Questions Answered:</strong> ${this.state.questionsAnswered}</p>
+                </div>
+                <h3>Your Badges</h3>
+                <div class="badges-container">
+                    ${badgesHTML}
+                </div>
             `;
         }
     }
