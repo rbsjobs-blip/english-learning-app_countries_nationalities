@@ -129,9 +129,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (newTabId === 'progress') {
                 this.renderProgressTab();
             }
+            if (newTabId === 'world-map') {
+                this.renderWorldMapTab();
+            }
         }
 
         loadAllModules() {
+            this.renderWorldMapTab();
             this.loadVocabularyExercise();
             this.loadConversationExercise();
             this.loadGrammarCase();
@@ -182,6 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
             this.saveState();
             this.updateProgressBar();
             this.checkBadges();
+            this.renderWorldMapTab(); // Re-render map to show progress
         }
 
         updateProgressBar() {
@@ -417,6 +422,43 @@ document.addEventListener('DOMContentLoaded', () => {
                     ${badgesHTML}
                 </div>
             `;
+        }
+
+        renderWorldMapTab() {
+            const pane = document.getElementById('world-map');
+            const completedCount = this.state.modules.vocabulary.completed;
+
+            const mapHTML = this.vocabularyData.map((country, index) => {
+                const isCompleted = index < completedCount;
+                const isNext = index === completedCount;
+                let statusClass = '';
+                if (isCompleted) {
+                    statusClass = 'completed';
+                } else if (isNext) {
+                    statusClass = 'next-up';
+                }
+
+                return `
+                    <div class="country-item ${statusClass}" data-country-index="${index}" title="${country.country}">
+                        <img src="${country.image}" alt="Flag of ${country.country}" class="country-flag">
+                        <span class="country-name">${country.country}</span>
+                    </div>
+                `;
+            }).join('');
+
+            pane.innerHTML = `
+                <h2>World Map</h2>
+                <p>Select a country to start a vocabulary challenge. Complete them all to master the module!</p>
+                <div class="world-map-container">
+                    ${mapHTML}
+                </div>
+            `;
+
+            pane.querySelectorAll('.country-item.next-up, .country-item.completed').forEach(item => {
+                item.addEventListener('click', () => {
+                    this.handleTabClick(document.querySelector('.tab-btn[data-tab="vocabulary"]'));
+                });
+            });
         }
     }
 

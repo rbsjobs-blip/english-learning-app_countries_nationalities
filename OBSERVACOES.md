@@ -5,6 +5,7 @@ Este arquivo detalha as correções necessárias no código para alinhar o aplic
 ---
 
 ## 1. Correções para Imagens 🖼️
+**Status: Concluído (Fase 2)**
 
 A lógica principal para carregar imagens já existe, mas os dados no `script.js` estão inconsistentes e incompletos.
 
@@ -37,6 +38,7 @@ O `README.md` especifica `character-ana.png`, mas o código pode estar usando um
 ---
 
 ## 2. Correções para Áudio 🔊
+**Status: Concluído (Fase 2)**
 
 O sistema de áudio precisa de uma **refatoração completa**, pois a implementação atual (Web Audio API) é incompatível com o requisito de usar arquivos `.mp3`.
 
@@ -115,6 +117,7 @@ showBadgeNotification(badge) {
 ---
 
 ## 3. Correções de Robustez do Código 🛡️
+**Status: Concluído (Fase 1)**
 
 Esta seção cobre melhorias para tornar o aplicativo mais resiliente a erros.
 
@@ -143,6 +146,7 @@ loadState() {
 ---
 
 ## 4. Correções de Estilo (CSS) 🎨
+**Status: Concluído (Fase 1)**
 
 Esta seção detalha as ações necessárias para corrigir problemas no arquivo `styles.css`.
 
@@ -153,3 +157,17 @@ Esta seção detalha as ações necessárias para corrigir problemas no arquivo 
 O arquivo `styles.css` atualmente contém todo o seu conteúdo duplicado, resultando em um arquivo com o dobro do tamanho necessário e dificultando a manutenção.
 
 A ação consiste em **remover a segunda metade do arquivo**, que é uma cópia exata da primeira, mantendo apenas uma versão de cada regra de estilo.
+---
+
+## 5. Implementação do Mapa Mundial (Fase 4) 🗺️
+**Status: Pendente**
+
+Esta seção detalha o plano para implementar a interface da aba "World Map".
+
+### Ação Necessária:
+
+#### a. Lógica de Renderização do Mapa (script.js)
+A ser criada uma nova função `renderWorldMapTab` que irá gerar dinamicamente o conteúdo da aba. O "mapa" será um container com elementos `div` representando cada país do `vocabularyData`. Cada `div` será clicável e terá um estilo que reflete se o país já foi "concluído" pelo usuário.
+
+#### b. Estilos do Mapa (styles.css)
+A serem adicionados novos estilos para o container do mapa (`.world-map-container`) e para os itens de país (`.country-item`), incluindo estados para "concluído" e "hover", criando uma experiência interativa e visualmente agradável.
