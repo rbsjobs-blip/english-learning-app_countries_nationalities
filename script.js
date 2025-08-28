@@ -24,14 +24,13 @@ document.addEventListener('DOMContentLoaded', () => {
             // --- Data ---
             this.vocabularyData = [
                 { country: 'Brazil', correct: 'Brazilian', image: 'images/flags/flag-brazil.png' },
+                { country: 'USA', correct: 'American', image: 'images/flags/flag-usa.png' },
+                { country: 'Japan', correct: 'Japanese', image: 'images/flags/flag-japan.png' },
                 { country: 'Italy', correct: 'Italian', image: 'images/flags/flag-italy.png' },
-                // Simplified data to reference only existing images
-                { country: 'Brazil', correct: 'Brazilian', image: 'images/flags/flag-brazil.png' },
-                { country: 'Italy', correct: 'Italian', image: 'images/flags/flag-italy.png' },
-                { country: 'Brazil', correct: 'Brazilian', image: 'images/flags/flag-brazil.png' },
-                { country: 'Italy', correct: 'Italian', image: 'images/flags/flag-italy.png' },
-                { country: 'Brazil', correct: 'Brazilian', image: 'images/flags/flag-brazil.png' },
-                { country: 'Italy', correct: 'Italian', image: 'images/flags/flag-italy.png' }
+                { country: 'Spain', correct: 'Spanish', image: 'images/flags/flag-spain.png' },
+                { country: 'France', correct: 'French', image: 'images/flags/flag-france.png' },
+                { country: 'Germany', correct: 'German', image: 'images/flags/flag-germany.png' },
+                { country: 'Turkey', correct: 'Turkish', image: 'images/flags/flag-turkey.png' }
             ];
             this.conversationData = {
                 scrambled: [
@@ -204,6 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         showBadgeNotification(badge) {
+            this.mediaManager.playSound('badge'); 
             alert(`Congratulations! You've earned a new badge: ${badge.name}`);
             console.log(`Badge earned: ${badge.name} - ${badge.description}`);
         }
@@ -402,67 +402,47 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Helper Classes ---
     class MediaManager {
         constructor() {
-            this.audioCtx = null;
             this.sounds = {};
             this.isAudioInitialized = false;
+            // Pré-carrega os sons para garantir que estejam prontos quando forem tocados.
+            this.initAudio();
         }
 
         initAudio() {
             if (this.isAudioInitialized) return;
+            
             try {
-                this.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                this.loadSounds();
+                // Define os caminhos para os arquivos de áudio
+                const audioFiles = {
+                    'correct': 'audio/correct-answer.mp3',
+                    'incorrect': 'audio/incorrect-answer.mp3',
+                    'badge': 'audio/badge-unlocked.mp3'
+                };
+
+                // Cria um objeto Audio para cada som e o armazena
+                for (const key in audioFiles) {
+                    this.sounds[key] = new Audio(audioFiles[key]);
+                    this.sounds[key].preload = 'auto';
+                }
+                
                 this.isAudioInitialized = true;
-                console.log("Audio context initialized successfully.");
+                console.log("Audio files preloaded.");
+
             } catch (e) {
-                console.error("Web Audio API is not supported in this browser.", e);
+                console.error("Could not initialize or preload audio files.", e);
+                this.isAudioInitialized = false;
             }
-        }
-
-        loadSounds() {
-            if (!this.audioCtx) return;
-
-            this.sounds['correct'] = () => {
-                const oscillator = this.audioCtx.createOscillator();
-                const gainNode = this.audioCtx.createGain();
-                oscillator.connect(gainNode);
-                gainNode.connect(this.audioCtx.destination);
-                oscillator.type = 'sine';
-                oscillator.frequency.setValueAtTime(600, this.audioCtx.currentTime);
-                gainNode.gain.setValueAtTime(0.1, this.audioCtx.currentTime);
-                gainNode.gain.exponentialRampToValueAtTime(0.00001, this.audioCtx.currentTime + 0.5);
-                oscillator.start(this.audioCtx.currentTime);
-                oscillator.stop(this.audioCtx.currentTime + 0.5);
-            };
-
-            this.sounds['incorrect'] = () => {
-                const oscillator = this.audioCtx.createOscillator();
-                const gainNode = this.audioCtx.createGain();
-                oscillator.connect(gainNode);
-                gainNode.connect(this.audioCtx.destination);
-                oscillator.type = 'triangle';
-                oscillator.frequency.setValueAtTime(200, this.audioCtx.currentTime);
-                gainNode.gain.setValueAtTime(0.1, this.audioCtx.currentTime);
-                gainNode.gain.exponentialRampToValueAtTime(0.00001, this.audioCtx.currentTime + 0.8);
-                oscillator.start(this.audioCtx.currentTime);
-                oscillator.stop(this.audioCtx.currentTime + 0.8);
-            };
-            console.log("Programmatic sounds loaded.");
         }
 
         playSound(soundName) {
-            if (!this.isAudioInitialized) {
-                console.warn("Audio not initialized. Call initAudio() on first user interaction.");
+            if (!this.isAudioInitialized || !this.sounds[soundName]) {
+                console.warn(`Sound "'${soundName}'" not loaded or found.`);
                 return;
             }
-            if (this.sounds[soundName] && typeof this.sounds[soundName] === 'function') {
-                if (this.audioCtx.state === 'suspended') {
-                    this.audioCtx.resume();
-                }
-                this.sounds[soundName]();
-            } else {
-                console.warn(`Sound "'${soundName}'" not loaded or found.`);
-            }
+            
+            // Garante que o som toque desde o início se já estiver tocando
+            this.sounds[soundName].currentTime = 0;
+            this.sounds[soundName].play().catch(error => console.error(`Error playing sound: ${soundName}`, error));
         }
     }
     class ADHDOptimizer {
