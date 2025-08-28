@@ -9,7 +9,9 @@
     *   [x] Sistema de áudio refatorado para `.mp3`.
 *   **Fase 3 (UI de Progresso):** Concluída.
     *   [x] Interface visual do sistema de medalhas implementada.
-*   **Próxima Fase (Fase 4):** Implementação da interface do Mapa Mundial.
+*   **Fase 4 (UI Mapa Mundial):** Concluída.
+    *   [x] Interface visual do Mapa Mundial implementada.
+*   **Próxima Fase (Fase 5):** Implementação da Responsividade para Dispositivos Móveis.
 
 ---
 

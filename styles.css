@@ -360,3 +360,68 @@ body {
     font-size: 0.9em;
     font-weight: 500;
 }
+
+/* --- Responsive Design --- */
+
+/* Tablet Styles */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .main-header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .tab-navigation {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 5px;
+    }
+
+    .badges-container {
+        grid-template-columns: 1fr; /* Stack badges on top of each other */
+    }
+}
+
+/* Mobile Styles */
+@media (max-width: 480px) {
+    body {
+        padding: 0;
+    }
+
+    .game-container {
+        border-radius: 0;
+        box-shadow: none;
+        min-height: 100vh;
+    }
+
+    .main-header {
+        padding: 10px;
+    }
+
+    .tab-btn {
+        padding: 8px 10px;
+        font-size: 0.9em;
+    }
+
+    #tab-content {
+        padding: 15px;
+    }
+
+    .world-map-container {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 15px;
+    }
+
+    .badge-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .badge-icon {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}

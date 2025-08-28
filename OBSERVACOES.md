@@ -160,7 +160,7 @@ A ação consiste em **remover a segunda metade do arquivo**, que é uma cópia 
 ---
 
 ## 5. Implementação do Mapa Mundial (Fase 4) 🗺️
-**Status: Pendente**
+**Status: Concluído (Fase 4)**
 
 Esta seção detalha o plano para implementar a interface da aba "World Map".
 
@@ -171,3 +171,16 @@ A ser criada uma nova função `renderWorldMapTab` que irá gerar dinamicamente 
 
 #### b. Estilos do Mapa (styles.css)
 A serem adicionados novos estilos para o container do mapa (`.world-map-container`) e para os itens de país (`.country-item`), incluindo estados para "concluído" e "hover", criando uma experiência interativa e visualmente agradável.
+---
+
+## 6. Responsividade para Dispositivos Móveis (Fase 5) 📱
+**Status: Pendente**
+
+Esta seção detalha o plano para tornar a aplicação web responsiva.
+
+### Ação Necessária:
+
+Adicionar `@media queries` ao final do arquivo `styles.css` para ajustar o layout para telas menores (tablets e celulares). As regras devem focar em:
+- Redução de fontes e espaçamentos.
+- Ajuste de layouts de grid/flex para colunas únicas.
+- Garantir que a navegação por abas não quebre em telas pequenas.
