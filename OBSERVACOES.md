@@ -187,10 +187,22 @@ Adicionar `@media queries` ao final do arquivo `styles.css` para ajustar o layou
 ---
 
 ## 7. Novo Tema de Cores (Modo Noturno) (Fase 6) 🎨
-**Status: Pendente**
+**Status: Concluído (Fase 6)**
 
 Esta seção detalha o plano para implementar um novo tema de cores acessível.
 
 ### Ação Necessária:
 
 Substituir as variáveis de cor no seletor `:root` do arquivo `styles.css` pela nova paleta de cores acessível, com fundo roxo escuro, texto azul claro e detalhes em rosa.
+---
+
+## 8. Banner de Identidade Visual (Fase 7) 🖼️
+**Status: Pendente**
+
+Esta seção detalha o plano para adicionar um banner com a marca do aplicativo.
+
+### Ação Necessária:
+
+1.  **Criar diretório:** Será criado o diretório `images/brand/` para organizar os assets da marca.
+2.  **HTML:** Adicionar uma tag `<header class="branding-banner">` no topo do `index.html`, contendo uma tag `<img>` apontando para o caminho `images/brand/banner.png`.
+3.  **CSS:** Adicionar estilos para `.branding-banner` e sua imagem para garantir que o banner seja exibido corretamente, com altura controlada e largura total.

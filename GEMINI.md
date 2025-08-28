@@ -13,7 +13,9 @@
     *   [x] Interface visual do Mapa Mundial implementada.
 *   **Fase 5 (Responsividade):** Concluída.
     *   [x] Layout ajustado para dispositivos móveis.
-*   **Próxima Fase (Fase 6):** Implementação do novo Tema de Cores (Modo Noturno).
+*   **Fase 6 (Tema Visual):** Concluída.
+    *   [x] Novo tema de cores "Modo Noturno" implementado.
+*   **Próxima Fase (Fase 7):** Implementação do Banner de Identidade Visual.
 
 ---
 
