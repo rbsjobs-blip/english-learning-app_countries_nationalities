@@ -140,3 +140,16 @@ loadState() {
     }
 }
 ```
+---
+
+## 4. Correções de Estilo (CSS) 🎨
+
+Esta seção detalha as ações necessárias para corrigir problemas no arquivo `styles.css`.
+
+### Ação Necessária:
+
+#### a. Remover Código Duplicado
+
+O arquivo `styles.css` atualmente contém todo o seu conteúdo duplicado, resultando em um arquivo com o dobro do tamanho necessário e dificultando a manutenção.
+
+A ação consiste em **remover a segunda metade do arquivo**, que é uma cópia exata da primeira, mantendo apenas uma versão de cada regra de estilo.

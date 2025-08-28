@@ -149,10 +149,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         loadState() {
-            const savedState = localStorage.getItem('learningAppState');
-            if (savedState) {
-                this.state = JSON.parse(savedState);
-                console.log("State loaded.");
+            try {
+                const savedState = localStorage.getItem('learningAppState');
+                if (savedState) {
+                    this.state = JSON.parse(savedState);
+                    console.log("State loaded.");
+                }
+            } catch (e) {
+                console.error("Could not load or parse state from localStorage. Starting fresh.", e);
             }
         }
 
